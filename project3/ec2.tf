@@ -33,7 +33,7 @@ resource "aws_db_instance" "wordpress_db" {
   allocated_storage      = var.database_details.allocated_storage
   storage_type           = "gp2"
   engine                 = "mysql"
-  engine_version         = "5.7"
+  engine_version         = "8.0.35"
   instance_class         = var.database_details.instance_class
   identifier             = "wordpressdb"
   username               = var.database_details.username
@@ -47,5 +47,5 @@ resource "aws_db_instance" "wordpress_db" {
 # Database Subnet Group
 resource "aws_db_subnet_group" "db_subnet" {
   name       = "my-db-subnet-group"
-  subnet_ids = values(aws_subnet.public1).*.id
+  subnet_ids = values(aws_subnet.public1.id)
 }
